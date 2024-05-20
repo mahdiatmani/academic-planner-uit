@@ -1,0 +1,30 @@
+.details {
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    border: 2px solid var(--ion-color-primary);
+    color: #000;
+    
+    h2 {
+        font-size: 24px;
+        border-bottom: 2px solid var(--ion-color-primary);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        color:var(--ion-color-primary);
+    }
+
+    p {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    // p::before {
+    //     content: "\2022";
+    //     color: var(--ion-color-primary);
+    //     display: inline-block;
+    //     width: 1em;
+    //     margin-left: -1em;
+    // }
+
+}

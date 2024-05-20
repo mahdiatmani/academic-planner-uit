@@ -1,0 +1,87 @@
+<div class="modal-header">
+  <span class="close-button" (click)="closeModal()">
+    <ion-icon name="close-outline"></ion-icon>
+  </span>
+</div>
+
+<div class="form-container">
+  <div class="form-header">
+    <h1>{{ 'courseRegistrationTitle' | translate }}</h1>
+    <p>{{ 'courseRegistrationDescription' | translate }}</p>
+  </div>
+
+  <form [formGroup]="courseForm" (ngSubmit)="submitForm()" novalidate>
+
+    <div class="form-controls">
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'codeLabel' | translate }}</ion-label>
+        <ion-input formControlName="code" placeholder="{{ 'enterCodePlaceholder' | translate }}" type="text"
+          ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'nameLabel' | translate }}</ion-label>
+        <ion-input formControlName="title" placeholder="{{ 'enterNamePlaceholder' | translate }}" type="text"
+          ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'creditHoursLabel' | translate }}</ion-label>
+        <ion-input formControlName="creditHours" placeholder="{{ 'creditHoursPlaceholder' | translate }}" type="number"
+          ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'coefficientLabel' | translate }}</ion-label>
+        <ion-input formControlName="coefficient" placeholder="{{ 'coefficientPlaceholder' | translate }}" type="number"
+          ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'descriptionLabel' | translate }}</ion-label>
+        <ion-textarea rows="4" formControlName="description"
+          placeholder="{{ 'enterDescriptionPlaceholder' | translate }}" type="text" ngDefaultControl></ion-textarea>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-select formControlName="semester" label="{{ 'semesterLabel' | translate }}"
+          placeholder="{{ 'selectSemesterPlaceholder' | translate }}">
+          <ion-select-option *ngFor="let semester of semesters" [value]="semester">{{ semester.name |
+            translate }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-select formControlName="establishment" label="{{ 'establishmentLabel' | translate }}"
+          placeholder="{{ 'selectEstablishmentPlaceholder' | translate }}">
+          <ion-select-option *ngFor="let establishment of establishments" [value]="establishment">{{ establishment.name
+            |
+            translate }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-select formControlName="department" label="{{ 'departmentLabel' | translate }}"
+          placeholder="{{ 'selectDepartmentPlaceholder' | translate }}">
+          <ion-select-option *ngFor="let department of departments" [value]="department">{{ department.name |
+            translate }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-select formControlName="teacher" label="{{ 'teacherLabel' | translate }}"
+          placeholder="{{ 'selectTeacherPlaceholder' | translate }}">
+          <ion-select-option *ngFor="let teacher of teachers" [value]="teacher">{{ teacher.firstName | translate }} {{ teacher.lastName | translate }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="form-buttons">
+      <ion-button type="submit">
+        <ion-icon name="send-outline" slot="end"></ion-icon>
+        {{ 'saveButtonLabel' | translate }} &nbsp;
+      </ion-button>
+    </div>
+
+  </form>
+</div>

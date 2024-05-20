@@ -1,0 +1,53 @@
+<app-base>
+
+  <div *ngIf="academicProgram" class="main-element-container">
+    <span class="edit-button" (click)="openAcademicProgramModal()">
+      <ion-icon name="create-outline"></ion-icon>
+    </span>
+    <h1 *ngIf="academicProgram.name">{{academicProgram.name}} 
+     <ng-container *ngIf="academicProgram.department.establishment.city && academicProgram.department.establishment.city.name">
+      (<ion-icon name="location-outline"></ion-icon> {{academicProgram.department.establishment.city.name}})
+    </ng-container>
+    </h1>
+    <p *ngIf="academicProgram.description">{{academicProgram.description}}</p>
+  </div>
+
+  <section class="page-shaped-section-conatiner">
+
+    <div class="section-header">
+      <h1 class="title">{{ 'courses' | translate}}</h1>
+    </div>
+  
+    <div class="section-body">
+      <div class="section-buttons">
+        <ion-button fill="solid"><ion-icon name="reload-outline"></ion-icon> &nbsp; {{ 'reload_courses' |
+          translate}}</ion-button>
+        <ion-button fill="outline" (click)="openAddCourseModal()"><ion-icon name="add-outline"></ion-icon> &nbsp; {{
+          'add_new_course' | translate}}</ion-button>
+      </div>
+  
+      <div class="grid-container">
+        <div class="card" *ngFor="let course of courses">
+          <span class="float-card-button" (click)="openCourseModal(course)">
+            <ion-icon name="create-outline"></ion-icon>
+          </span>
+          <div class="image-container">
+            <p class="semester"> {{course.semester.name}} </p>
+            <img [alt]="course.name" [src]="getBackground()" />
+          </div>
+          <ion-card-header>
+            <ion-card-title>{{ course.title }}</ion-card-title>
+            <ion-card-subtitle>{{course.teacher.firstName}} {{course.teacher.lastName}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ course.description }}</p>
+          </ion-card-content>
+          <div class="card-bottom-buttons">
+            <ion-button color="primary" fill="clear" (click)="openCoursePage(course.code)"> {{ 'moreDetailsLabel' | translate }} &nbsp; <ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</app-base>

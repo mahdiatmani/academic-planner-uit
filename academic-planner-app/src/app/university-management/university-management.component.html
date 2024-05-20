@@ -1,0 +1,55 @@
+<app-base>
+
+  <div *ngIf="university" class="main-element-container">
+    <span class="edit-button" (click)="openUniversityModal()">
+      <ion-icon name="create-outline"></ion-icon>
+    </span>
+    <img *ngIf="university.thumbnail" [alt]="university.name" [src]="university.thumbnail" />
+    <h1 *ngIf="university.name">{{university.name}} 
+     <ng-container *ngIf="university.city && university.city.name">
+      (<ion-icon name="location-outline"></ion-icon> {{university.city.name}})
+    </ng-container>
+    </h1>
+    <p *ngIf="university.description">{{university.description}}</p>
+  </div>
+  
+  <section class="page-shaped-section-conatiner">
+
+    <div class="section-header">
+      <h1 class="title">{{ 'establishments' | translate}}</h1>
+    </div>
+  
+    <div class="section-body">
+      <div class="section-buttons">
+        <ion-button fill="solid"><ion-icon name="reload-outline"></ion-icon> &nbsp; {{ 'reload_establishments' |
+          translate}}</ion-button>
+        <ion-button fill="outline" (click)="openAddEstablishmentModal()"><ion-icon name="add-outline"></ion-icon> &nbsp; {{
+          'add_new_establishment' | translate}}</ion-button>
+      </div>
+  
+      <div class="grid-container">
+        <div class="card" *ngFor="let establishment of establishments">
+          <span class="float-card-button" (click)="openEstablishmentModal(establishment)">
+            <ion-icon name="create-outline"></ion-icon>
+          </span>
+          <div class="image-container">
+            <img [alt]="establishment.name" [src]="establishment.thumbnail" />
+          </div>
+          <ion-card-header>
+            <ion-card-title>{{ establishment.name }}</ion-card-title>
+            <ion-card-subtitle><ion-icon name="location-outline"></ion-icon> {{ establishment.city.name
+              }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ establishment.description }}</p>
+          </ion-card-content>
+          <div class="card-bottom-buttons">
+            <ion-button color="primary" fill="clear" (click)="openEstablishmentPage(establishment.code)"> {{ 'moreDetailsLabel' | translate }} &nbsp; <ion-icon
+                name="arrow-forward-outline"></ion-icon></ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</app-base>

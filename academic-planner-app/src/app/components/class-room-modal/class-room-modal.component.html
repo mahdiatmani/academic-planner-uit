@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <span class="close-button" (click)="closeModal()">
+    <ion-icon name="close-outline"></ion-icon>
+  </span>
+</div>
+
+<div class="form-container">
+  <div class="form-header">
+    <h1>{{ 'classroomRegistrationTitle' | translate }}</h1>
+    <p>{{ 'classroomRegistrationDescription' | translate }}</p>
+  </div>
+
+  <form [formGroup]="classRoomForm" (ngSubmit)="submitForm()" novalidate>
+
+    <div class="form-controls">
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'codeLabel' | translate }}</ion-label>
+        <ion-input formControlName="code" placeholder="{{ 'enterCodePlaceholder' | translate }}" type="text" ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'nameLabel' | translate }}</ion-label>
+        <ion-input formControlName="name" placeholder="{{ 'enterNamePlaceholder' | translate }}" type="text" ngDefaultControl></ion-input>
+      </ion-item>
+
+
+    </div>
+
+    <div class="form-buttons">
+      <ion-button type="submit">
+        <ion-icon name="send-outline" slot="end"></ion-icon>
+        {{ 'saveButtonLabel' | translate }} &nbsp;
+      </ion-button>
+    </div>
+
+  </form>
+</div>

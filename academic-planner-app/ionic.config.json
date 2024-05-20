@@ -1,0 +1,7 @@
+{
+  "name": "academicplanner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

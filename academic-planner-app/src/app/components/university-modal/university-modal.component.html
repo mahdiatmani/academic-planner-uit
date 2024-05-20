@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <span class="close-button" (click)="closeModal()">
+    <ion-icon name="close-outline"></ion-icon>
+  </span>
+</div>
+
+<div class="form-container">
+  <div class="form-header">
+    <h1>{{ 'universityRegistrationTitle' | translate }}</h1>
+    <p>{{ 'universityRegistrationDescription' | translate }}</p>
+  </div>
+
+  <form [formGroup]="universityForm" (ngSubmit)="submitForm()" novalidate>
+
+    <div class="thumbnail-container">
+      <ion-img [src]="universityForm.get('thumbnail')?.value" class="thumbnail"></ion-img>
+      <ion-button (click)="fileInput.click()">   
+        {{ 'changeUniversityImage' | translate }} &nbsp; <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+      <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" class="hidden-input">
+    </div>
+
+    <div class="form-controls">
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'codeLabel' | translate }}</ion-label>
+        <ion-input formControlName="code" placeholder="{{ 'enterCodePlaceholder' | translate }}" type="text" ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'nameLabel' | translate }}</ion-label>
+        <ion-input formControlName="name" placeholder="{{ 'enterNamePlaceholder' | translate }}" type="text" ngDefaultControl></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="stacked">{{ 'descriptionLabel' | translate }}</ion-label>
+        <ion-textarea rows="4" formControlName="description" placeholder="{{ 'enterDescriptionPlaceholder' | translate }}" type="text"
+          ngDefaultControl></ion-textarea>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-select formControlName="citizenship" label="{{ 'countryLabel' | translate }}" placeholder="{{ 'selectCountryLabel' | translate }}">
+          <ion-select-option *ngFor="let country of countries" [value]="country">{{ country.name }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-select formControlName="city" label="{{ 'cityLabel' | translate }}" placeholder="{{ 'selectCityLabel' | translate }}">
+          <ng-container *ngIf="selectedCountry">
+            <ion-select-option *ngFor="let city of selectedCountry.cities" [value]="city">{{ city.name }}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+
+    </div>
+
+    <div class="form-buttons">
+      <ion-button type="submit">
+        <ion-icon name="send-outline" slot="end"></ion-icon>
+        {{ 'saveButtonLabel' | translate }} &nbsp;
+      </ion-button>
+    </div>
+
+  </form>
+</div>

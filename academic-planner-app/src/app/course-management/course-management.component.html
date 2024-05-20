@@ -1,0 +1,31 @@
+<app-base>
+  <div *ngIf="course" class="main-element-container">
+    <span class="edit-button" (click)="openCourseModal()">
+      <ion-icon name="create-outline"></ion-icon>
+    </span>
+    <h1 *ngIf="course.title">{{course.title}} 
+     <ng-container *ngIf="course.academicProgram.department.establishment.city && course.academicProgram.department.establishment.city.name">
+      ({{course.academicProgram.code}})
+    </ng-container>
+    </h1>
+    <p *ngIf="course.description">{{course.description}}</p>
+
+    <div class="details">
+
+      <h2>Details</h2>
+      <p *ngIf="course.academicProgram">University : {{course.academicProgram.department.establishment.university.name}}</p>
+      <p *ngIf="course.academicProgram">Establishment : {{course.academicProgram.department.establishment.name}}</p>
+      <p *ngIf="course.academicProgram">Department : {{course.academicProgram.department.name}}</p>
+      <p *ngIf="course.academicProgram">Academic program : {{course.academicProgram.name}}</p>
+
+      <p *ngIf="course.teacher">Teaher : {{course.teacher.firstName}} {{course.teacher.lastName}}</p>
+      <p *ngIf="course.coefficient">Coefficient : {{course.coefficient}}</p>
+      <p *ngIf="course.creditHours">creditHours : {{course.creditHours}} hrs</p>
+    </div>
+
+  </div>
+
+  <!-- <section class="page-shaped-section-conatiner">
+    
+  </section> -->
+</app-base>
